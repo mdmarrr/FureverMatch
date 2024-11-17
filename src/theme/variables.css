@@ -1,0 +1,76 @@
+/* For information on how to create your own theme, please see:
+http://ionicframework.com/docs/theming/ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.logo {
+    width: 150px;
+    height: auto;
+    margin-left: 20px;
+}
+
+body, h1, h2, h3, strong, p, ion-title {
+    font-family: 'Montserrat', sans-serif;
+}
+
+ion-title {
+    font-size: 18px;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+h2 {
+   font-size: 16px;
+}
+
+p {
+    font-size: 14px;
+}
+
+.sc-ion-input-md-h {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sc-ion-buttons-md {
+    --border-color: #1A4B41;
+}
+
+ion-content {
+    padding: 20px;
+}
+
+ion-button {
+    --background: #1A4B41;
+    --background-hover: white;
+    --background-activated: #1A4B41;
+    --background-focused: #88f4be;
+
+    --color: white;
+    width: 130px;
+    --border-style: solid;
+    --border-color: #1A4B41;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.icons {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    font-size: 10px;
+}
+
+ion-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

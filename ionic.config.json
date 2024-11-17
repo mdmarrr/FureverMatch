@@ -1,0 +1,7 @@
+{
+  "name": "furever-match",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
