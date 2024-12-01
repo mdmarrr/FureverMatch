@@ -1,0 +1,88 @@
+<template>
+    <ion-page>
+      <ion-header :translucent="true">
+        <ion-toolbar>
+          <img src="@/assets/logo.png" alt="Logo" class="logo" />
+          <ion-button class="icon" size="small" slot="end" shape="round">
+            <ion-icon :icon="person"/>
+          </ion-button>
+        </ion-toolbar>
+      </ion-header>
+  
+      <ion-content>
+        <form>
+          <ion-item>
+            <ion-label>Species</ion-label>
+            <ion-select v-model="filters.species">
+              <ion-select-option value="all">All</ion-select-option>
+              <ion-select-option value="Dog">Dog</ion-select-option>
+              <ion-select-option value="Cat">Cat</ion-select-option>
+            </ion-select>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label>Sex</ion-label>
+            <ion-select v-model="filters.sex">
+              <ion-select-option value="all">All</ion-select-option>
+              <ion-select-option value="male">Male</ion-select-option>
+              <ion-select-option value="female">Female</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Status</ion-label>
+            <ion-select v-model="filters.status">
+              <ion-select-option value="all">All</ion-select-option>
+              <ion-select-option value="available">Available</ion-select-option>
+              <ion-select-option value="adopted">Adopted</ion-select-option>
+              <ion-select-option value="fostered">Fostered</ion-select-option>
+              <ion-select-option value="reserved">Reserved</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+        </form>
+      </ion-content>
+  
+      <ion-footer>
+        <ion-toolbar>
+            <div class="button-container">
+                <ion-button @click="applyFilters">Apply</ion-button>
+            </div>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-page>
+</template>
+  
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { IonSelect, IonSelectOption, IonItem, IonLabel, IonRange, IonInput, IonButton } from '@ionic/vue';
+import { person } from 'ionicons/icons';
+  
+const router = useRouter();
+  
+const filters = ref({
+  species: 'all',
+  sex: 'all',
+  status: 'all',
+});
+
+const applyFilters = () => {
+  router.push({
+    path: '/animals',
+    query: {
+      species: filters.value.species,
+      sex: filters.value.sex,
+      status: filters.value.status,
+    }
+  });
+};
+</script>
+  
+<style scoped>
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+</style>

@@ -17,7 +17,8 @@
         <strong>Welcome to Furever Match</strong>
         <p>Find your perfect match forever!</p>
         <div class="button-container">
-          <ion-button @click="navigateToLogin">Access</ion-button>
+          <ion-button @click="navigateToLogin">Log in</ion-button>
+          <ion-button @click="navigateToLogin">Register</ion-button>
         </div>
       </div>
     </ion-content>

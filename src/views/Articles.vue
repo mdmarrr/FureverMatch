@@ -10,9 +10,15 @@
       </ion-header>
 
       <ion-content>
-        <div class="articles-content">
-          <p>Contenido relacionado con artículos.</p>
-        </div>
+        <div class="image-container">
+          <img src="@/assets/catdog.jpg" alt="cat & dog" class="image" />
+            <div class="overlay-text">
+              <h1>Learn more...</h1>
+            </div>
+          </div>
+            <div class="articles-content">
+              
+            </div>
       </ion-content>
 
       <ion-footer>
@@ -77,9 +83,41 @@ ion-button:hover {
   --border-color: #1A4B41;
   --color: white;
 }
-  
+
 .articles-content {
   margin-top: 20px;
   margin-left: 20px;
+  overflow-y: auto;
+  height: 100%;
+  max-height: 400px;
+  padding-bottom: 60px;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  min-height: 350px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 30%;
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 </style>

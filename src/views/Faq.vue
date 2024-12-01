@@ -19,7 +19,7 @@
             <div class="faq-content">
               <div v-for="(question, index) in questions" :key="index" class="faq-item">
                 <div class="faq-question">
-                  <h2>{{ question.title }}</h2>
+                  <h3>{{ question.title }}</h3>
                   <ion-button
                     class="icons"
                     size="small"
@@ -65,7 +65,7 @@
             </ion-button>
           </router-link>
         </div>
-      </ion-toolbar>
+      </ion-toolbar>      
       </ion-footer>
     </ion-page>
 </template>
@@ -73,11 +73,13 @@
 <script setup lang="ts">
 import { person, add, remove } from 'ionicons/icons';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const questions = ref([
-  { title: '¿Qué es la adopción responsable?', answer: 'La adopción responsable implica asegurarse de que el animal vaya a un hogar adecuado, con el compromiso de cuidarlo y darle un hogar seguro.' },
-  { title: '¿Cuáles son los requisitos para adoptar?', answer: 'Los requisitos varían según el refugio, pero en general se requiere tener un hogar adecuado y estar dispuesto a cuidar del animal a largo plazo.' },
-  { title: '¿Qué tipos de animales se pueden adoptar?', answer: 'Puedes adoptar perros, gatos y otros animales pequeños. Cada refugio tiene diferentes opciones disponibles.' },
+  { title: 'Why adopt instead of purchase?', answer: 'Nowadays there are millions of animals waiting for their forever home, adoption is the most responsible option. We are sure you will find a match for you in no time!' },
+  { title: 'Can I send an adoption form without visiting first?', answer: 'We believe meeting the animals before adopting is a crucial step. If you send an adoption form before visiting, the shelter will contact you to schedule a visit first.' },
 ]);
 
 const isOpen = ref(Array(questions.value.length).fill(false));
@@ -85,6 +87,15 @@ const isOpen = ref(Array(questions.value.length).fill(false));
 const toggleAnswer = (index: number) => {
   isOpen.value[index] = !isOpen.value[index];
 };
+
+const navigateToUsefulLinks = () => {
+  router.push('/useful-links');
+};
+  
+const navigateToContact = () => {
+  router.push('/contact');
+};
+
 </script>
   
 <style scoped>
@@ -119,6 +130,7 @@ ion-button:hover {
   overflow-y: auto;
   height: 100%;
   max-height: 400px;
+  padding-bottom: 60px;
 }
 
 .faq-question {

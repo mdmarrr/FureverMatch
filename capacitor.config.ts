@@ -6,4 +6,9 @@ const config: CapacitorConfig = {
   webDir: 'www'
 };
 
-export default config;
+export default  {
+  server: {
+    url: 'http://172.20.10.3/:5000',
+    androidScheme: 'http'
+  }
+};

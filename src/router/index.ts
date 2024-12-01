@@ -4,9 +4,11 @@ import HomePage from '../views/HomePage.vue';
 import Login from '../views/Login.vue';
 import Animals from '../views/Animals.vue';
 import UsefulLinks from '../views/UsefulLinks.vue';
+import Contact from '../views/Contact.vue';
 import Faq from '../views/Faq.vue';
 import Articles from '../views/Articles.vue';
 import Legal from '../views/Legal.vue';
+import Filters from '../views/Filters.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -29,9 +31,19 @@ const routes: Array<RouteRecordRaw> = [
     component: Animals
   },
   {
+    path: '/filters',
+    name: 'Filters',
+    component: Filters
+  },
+  {
     path: '/useful-links',
     name: 'Useful Links',
     component: UsefulLinks
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact
   },
   {
     path: '/faq',

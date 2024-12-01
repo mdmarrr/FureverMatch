@@ -22,7 +22,12 @@ h1 {
 }
 
 h2 {
+   font-weight: bold;
    font-size: 16px;
+}
+
+h3 {
+    font-size: 15px;
 }
 
 p {
@@ -69,8 +74,24 @@ ion-button {
     font-size: 10px;
 }
 
+.filtersIcon {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
 ion-footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
+
+.animal img {
+    max-height: 500px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+}
+  
