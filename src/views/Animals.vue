@@ -17,11 +17,12 @@
         </ion-toolbar>
         <div class="animals-container">
           <div class="animal" v-for="animal in filteredAnimals" :key="animal.animal_id">
-            <img :src="animal.photo" alt="animal.photo" />
+            <router-link :to="`/animals/${animal.animal_id}`">
+              <img :src="animal.photo" alt="animal.photo" />
+            </router-link>
             <h2>{{ animal.name }}</h2>
             <p>{{ animal.species}}, {{ animal.sex }}</p>
             <p>{{ animal.age }}</p>
-            <p>{{ animal.description }}</p>
             <p>{{ animal.status }}</p>
           </div>
         </div>
@@ -126,9 +127,15 @@ const navigateToContact = () => {
 }
   
 .animal img {
-  width: 100%;
+  width: 80%;
   height: auto;
   border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .animal img {
+    max-width: 90%;
+  }
 }
 
 .button-container {

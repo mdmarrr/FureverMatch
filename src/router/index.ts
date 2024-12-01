@@ -3,6 +3,7 @@ import { RouteRecordRaw } from 'vue-router';
 import HomePage from '../views/HomePage.vue';
 import Login from '../views/Login.vue';
 import Animals from '../views/Animals.vue';
+import AnimalDetail from '../views/AnimalDetail.vue';
 import UsefulLinks from '../views/UsefulLinks.vue';
 import Contact from '../views/Contact.vue';
 import Faq from '../views/Faq.vue';
@@ -29,6 +30,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/animals',
     name: 'Animals',
     component: Animals
+  },
+  {
+    path: '/animals/:id',
+    name: 'AnimalDetail',
+    component: AnimalDetail,
+    props: true
   },
   {
     path: '/filters',

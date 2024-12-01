@@ -8,12 +8,24 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
-const client = new Client({
+/*const client = new Client({
   user: 'postgres',
   host: 'localhost',
   database: 'FureverMatch',
   password: '12345678',
   port: 5432,
+});*/
+
+/*const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});*/
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL || 'postgres://postgres:12345678@localhost:5432/FureverMatch',
+  ssl: false,
 });
 
 client.connect();
