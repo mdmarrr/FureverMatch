@@ -39,7 +39,7 @@ Follow these steps to set up and run the project locally.
 
    node server.js
 
-##Frontend Setup
+### Frontend Setup
 
 1. Navigate to the frontend directory:
 
@@ -55,7 +55,7 @@ Follow these steps to set up and run the project locally.
 
 The application should now be running at http://localhost:8080 (default for Vue).
 
-##API Endpoints
+### API Endpoints
 
 GET /api/animals: Retrieve all animals.
 GET /api/animals/:id: Retrieve a specific animal by ID.
