@@ -3,7 +3,7 @@ const { Client } = require('pg');
 const cors = require('cors');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -113,6 +113,10 @@ app.get('/api/city', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener las ciudades' });
   }
+});
+
+app.listen(port, () => {
+  console.log(`Servidor corriendo en el puerto ${port}`);
 });
 
 app.listen(5000, '0.0.0.0', () => {
