@@ -119,11 +119,11 @@ app.listen(port, () => {
   console.log(`Servidor corriendo en el puerto ${port}`);
 });
 
-app.listen(5000, '0.0.0.0', () => {
+/*app.listen(5000, '0.0.0.0', () => {
   console.log('Servidor corriendo en http://0.0.0.0:5000');
 });
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
-});
+});*/
 
