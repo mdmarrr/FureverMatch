@@ -1,6 +1,8 @@
 const express = require('express');
-const { Client } = require('pg');
+//const { Client } = require('pg');
+const path = require('path');
 const cors = require('cors');
+const axios = require('axios');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -20,6 +22,8 @@ const apiBaseURL = 'https://furever-match-eccf751a1528.herokuapp.com/api';
 });
 
 client.connect();*/
+
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('/api/shelters', async (req, res) => {
   try {
@@ -129,6 +133,10 @@ app.get('/api/city', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener las ciudades' });
   }
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html')); // Sirve el archivo index.html de Vue.js
 });
 
 app.listen(port, () => {
