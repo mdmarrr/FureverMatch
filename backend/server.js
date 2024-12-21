@@ -5,7 +5,6 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 5000;
 
-//app.use(cors());
 app.use(cors({
   origin: '*', // Permitir solicitudes de todos los orígenes
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
@@ -13,31 +12,19 @@ app.use(cors({
 }));
 app.use(express.json());
 
-/*const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'FureverMatch',
-  password: '12345678',
-  port: 5432,
-});*/
+const apiBaseURL = 'https://furever-match-eccf751a1528.herokuapp.com/api';
 
 /*const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});*/
-
-const client = new Client({
   connectionString: process.env.DATABASE_URL || 'postgres://postgres:12345678@localhost:5432/FureverMatch',
   ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false
 });
 
-client.connect();
+client.connect();*/
 
 app.get('/api/shelters', async (req, res) => {
   try {
-    const result = await client.query('SELECT * FROM Shelters');
+    const response = await axios.get(`${apiBaseURL}/shelters`);
+    //const result = await client.query('SELECT * FROM Shelters');
     res.json(result.rows);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener los refugios' });
@@ -47,13 +34,32 @@ app.get('/api/shelters', async (req, res) => {
 app.get('/api/animals/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    const result = await client.query('SELECT * FROM Animals WHERE animal_id = $1', [id]);
+    const response = await axios.get(`${apiBaseURL}/animals/${id}`);
+    //const result = await client.query('SELECT * FROM Animals WHERE animal_id = $1', [id]);
     res.json(result.rows[0]);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener el animal' });
   }
 });
 
+app.get('/api/animals', async (req, res) => {
+  const { species, sex, status } = req.query;
+
+  try {
+    // Se construye la URL con los parámetros de búsqueda
+    let url = `${apiBaseURL}/animals?`;
+    if (species && species !== 'all') url += `species=${species}&`;
+    if (sex && sex !== 'all') url += `sex=${sex}&`;
+    if (status && status !== 'all') url += `status=${status}&`;
+
+    // Hacemos la solicitud HTTP a la API de Heroku
+    const response = await axios.get(url);
+    res.json(response.data);  // Devuelve los animales desde la API de Heroku
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener los animales' });
+  }
+});
+/*
 app.get('/api/animals', async (req, res) => {
   const { species, sex, status } = req.query;
 
@@ -82,10 +88,11 @@ app.get('/api/animals', async (req, res) => {
     res.status(500).json({ error: 'Error al obtener los animales' });
   }
 });
-
+*/
 app.get('/api/users', async (req, res) => {
   try {
-    const result = await client.query('SELECT * FROM Users');
+    const response = await axios.get(`${apiBaseURL}/users`);
+    //const result = await client.query('SELECT * FROM Users');
     res.json(result.rows);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener los usuarios' });
@@ -101,10 +108,13 @@ app.post('/api/users', async (req, res) => {
   //}
 
   try {
-    const result = await client.query(
+    const response = await axios.post(`${apiBaseURL}/users`, {
+      email, password, name
+    });
+    /*const result = await client.query(
       'INSERT INTO Users (email, password, name) VALUES ($1, $2, $3) RETURNING *',
       [email, password, name]
-    );
+    );*/
     res.status(201).json(result.rows[0]);
   } catch (error) {
     res.status(500).json({ error: 'Error creating user' });
@@ -113,7 +123,8 @@ app.post('/api/users', async (req, res) => {
 
 app.get('/api/city', async (req, res) => {
   try {
-    const result = await client.query('SELECT * FROM City');
+    const response = await axios.get(`${apiBaseURL}/city`);
+    //const result = await client.query('SELECT * FROM City');
     res.json(result.rows);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener las ciudades' });
