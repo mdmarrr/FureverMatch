@@ -29,7 +29,8 @@ app.get('/api/shelters', async (req, res) => {
   try {
     const response = await axios.get(`${apiBaseURL}/shelters`);
     //const result = await client.query('SELECT * FROM Shelters');
-    res.json(result.rows);
+    res.json(response.data);
+    //res.json(result.rows);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener los refugios' });
   }
@@ -40,7 +41,8 @@ app.get('/api/animals/:id', async (req, res) => {
   try {
     const response = await axios.get(`${apiBaseURL}/animals/${id}`);
     //const result = await client.query('SELECT * FROM Animals WHERE animal_id = $1', [id]);
-    res.json(result.rows[0]);
+    res.json(response.data);
+    // res.json(result.rows[0]);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener el animal' });
   }
@@ -97,12 +99,13 @@ app.get('/api/users', async (req, res) => {
   try {
     const response = await axios.get(`${apiBaseURL}/users`);
     //const result = await client.query('SELECT * FROM Users');
-    res.json(result.rows);
+    res.json(response.data);
+    //res.json(result.rows);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener los usuarios' });
   }
 });
-
+/*
 app.post('/api/users', async (req, res) => {
   const { email, password, name } = req.body;
 
@@ -118,36 +121,30 @@ app.post('/api/users', async (req, res) => {
     /*const result = await client.query(
       'INSERT INTO Users (email, password, name) VALUES ($1, $2, $3) RETURNING *',
       [email, password, name]
-    );*/
+    );
     res.status(201).json(result.rows[0]);
   } catch (error) {
     res.status(500).json({ error: 'Error creating user' });
   }
 });
+*/
 
 app.get('/api/city', async (req, res) => {
   try {
     const response = await axios.get(`${apiBaseURL}/city`);
     //const result = await client.query('SELECT * FROM City');
-    res.json(result.rows);
+    res.json(response.data);
+    //res.json(result.rows);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener las ciudades' });
   }
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html')); // Sirve el archivo index.html de Vue.js
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en el puerto ${port}`);
 });
-
-/*app.listen(5000, '0.0.0.0', () => {
-  console.log('Servidor corriendo en http://0.0.0.0:5000');
-});
-
-app.listen(port, () => {
-  console.log(`Servidor corriendo en http://localhost:${port}`);
-});*/
 
