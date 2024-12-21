@@ -2,14 +2,16 @@ const express = require('express');
 const { Client } = require('pg');
 const cors = require('cors');
 
-//app.use(cors());
-app.use(cors({
-  origin: ['http://localhost:8100', 'https://furever-match-eccf751a1528.herokuapp.com'] // replace with the actual domain
-}));
-app.use(express.json());
-
 const app = express();
 const port = process.env.PORT || 5000;
+
+//app.use(cors());
+app.use(cors({
+  origin: '*', // Permitir solicitudes de todos los orígenes
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
+}));
+app.use(express.json());
 
 /*const client = new Client({
   user: 'postgres',
