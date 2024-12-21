@@ -59,13 +59,14 @@ const filters = ref({
 
 onMounted(async () => {
   const queryParams = router.currentRoute.value.query;
+  //const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:5000';
 
   filters.value.species = (Array.isArray(queryParams.species) ? queryParams.species[0] : queryParams.species) ?? 'all';
   filters.value.sex = (Array.isArray(queryParams.sex) ? queryParams.sex[0] : queryParams.sex) ?? 'all';
   filters.value.status = (Array.isArray(queryParams.status) ? queryParams.status[0] : queryParams.status) ?? 'all';
 
   try {
-    const response = await fetch('http://localhost:5000/api/animals');
+    const response = await fetch(`https://furever-match-eccf751a1528.herokuapp.com/api/animals`);
     if (response.ok) {
       const data = await response.json();
       animals.value = data;

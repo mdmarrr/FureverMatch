@@ -2,11 +2,14 @@ const express = require('express');
 const { Client } = require('pg');
 const cors = require('cors');
 
+//app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:8100', 'https://furever-match-eccf751a1528.herokuapp.com'] // replace with the actual domain
+}));
+app.use(express.json());
+
 const app = express();
 const port = process.env.PORT || 5000;
-
-app.use(cors());
-app.use(express.json());
 
 /*const client = new Client({
   user: 'postgres',
@@ -25,7 +28,7 @@ app.use(express.json());
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL || 'postgres://postgres:12345678@localhost:5432/FureverMatch',
-  ssl: false,
+  ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false
 });
 
 client.connect();
