@@ -32,12 +32,9 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const navigateToLogin = () => {
-  router.push('/login');
+  router.replace('/login');
 };
 
-const navigateToRegister = () => {
-  router.push('/login');
-};
 </script>
 
 <style scoped>

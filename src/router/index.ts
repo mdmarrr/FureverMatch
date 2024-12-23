@@ -2,14 +2,17 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import HomePage from '../views/HomePage.vue';
 import Login from '../views/Login.vue';
+import Profile from '../views/Profile.vue';
 import Animals from '../views/Animals.vue';
 import AnimalDetail from '../views/AnimalDetail.vue';
-import UsefulLinks from '../views/UsefulLinks.vue';
+import Favourites from '../views/Favourites.vue';
 import Contact from '../views/Contact.vue';
 import Faq from '../views/Faq.vue';
 import Articles from '../views/Articles.vue';
 import Legal from '../views/Legal.vue';
 import Filters from '../views/Filters.vue';
+import VisitForm from '../views/VisitForm.vue';
+import AdoptForm from '../views/AdoptForm.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -27,6 +30,11 @@ const routes: Array<RouteRecordRaw> = [
     component: Login
   },
   {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
+  },
+  {
     path: '/animals',
     name: 'Animals',
     component: Animals
@@ -38,14 +46,14 @@ const routes: Array<RouteRecordRaw> = [
     props: true
   },
   {
+    path: '/favourites',
+    name: 'Favourites',
+    component: Favourites
+  },
+  {
     path: '/filters',
     name: 'Filters',
     component: Filters
-  },
-  {
-    path: '/useful-links',
-    name: 'Useful Links',
-    component: UsefulLinks
   },
   {
     path: '/contact',
@@ -66,6 +74,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/legal',
     name: 'Legal',
     component: Legal
+  },
+  {
+    path: '/visit-form',
+    name: 'Visit Form',
+    component: VisitForm
+  },
+  {
+    path: '/adopt-form',
+    name: 'Adopt Form',
+    component: AdoptForm
   }
 ]
 

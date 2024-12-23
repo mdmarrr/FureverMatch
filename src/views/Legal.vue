@@ -3,7 +3,7 @@
       <ion-header :translucent="true">
         <ion-toolbar>
           <img src="@/assets/logo.png" alt="Logo" class="logo" />
-          <ion-button class="icon" size="small" slot="end" shape="round">
+          <ion-button @click="navigateToProfile" class="icon" size="small" slot="end" shape="round">
             <ion-icon :icon="person"></ion-icon>
           </ion-button>
         </ion-toolbar>
@@ -66,6 +66,13 @@
   
 <script setup lang="ts">
 import { person } from 'ionicons/icons';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const navigateToProfile = () => {
+  router.push('/profile');
+};
 </script>
   
 <style scoped>

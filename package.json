@@ -24,10 +24,12 @@
     "@ionic/vue-router": "^8.4.0",
     "axios": "^1.7.9",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "express": "^4.18.1",
     "firebase": "^11.0.2",
     "ionicons": "^7.4.0",
     "pg": "^8.8.0",
+    "pinia": "^2.3.0",
     "vue": "^3.3.0",
     "vue-router": "^4.2.0"
   },

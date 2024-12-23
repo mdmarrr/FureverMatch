@@ -3,7 +3,7 @@
       <ion-header :translucent="true">
         <ion-toolbar>
           <img src="@/assets/logo.png" alt="Logo" class="logo" />
-          <ion-button class="icon" size="small" slot="end" shape="round">
+          <ion-button @click="navigateToProfile" class="icon" size="small" slot="end" shape="round">
             <ion-icon :icon="person"/>
           </ion-button>
         </ion-toolbar>
@@ -11,6 +11,9 @@
 
       <ion-content>
         <div class="animal-container">
+          <ion-button @click="goBack" class="icon" size="small" slot="start" shape="round">
+            <ion-icon :icon="arrowBack"/>
+          </ion-button>
             <div class="animal" v-if="animal">
                 <img :src="animal.photo" alt="animal.name" />
                 <h2>{{ animal.name }}</h2>
@@ -18,6 +21,9 @@
                 <p>{{ animal.age }}</p>
                 <p>{{ animal.description }}</p>
                 <p>{{ animal.status }}</p>
+                <ion-button @click="toggleFavourite" class="icon" size="small" shape="round">
+                  <ion-icon :icon="isFavourite ? 'heart' : 'heart-outline'" />
+                </ion-button>
             </div>
         </div>
       </ion-content>
@@ -25,8 +31,8 @@
       <ion-footer>
         <ion-toolbar>
             <div class="button-container">
-                <ion-button class="outline-button" fill="outline" @click="navigateToUsefulLinks">Useful Links</ion-button>
-                <ion-button class="outline-button" fill="outline" @click="navigateToContact">Shelters</ion-button>
+                <ion-button class="outline-button" fill="outline" @click="navigateToVisitForm">Visit</ion-button>
+                <ion-button class="outline-button" fill="outline" @click="navigateToAdoptForm">Adopt</ion-button>
             </div>
         </ion-toolbar>
       </ion-footer>
@@ -34,13 +40,50 @@
 </template>
 
 <script setup lang="ts">
+
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useAnimalsStore } from '@/stores/animalsStore';
+import { useFavouritesStore } from '@/stores/favouritesStore';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/vue';
-import { person} from 'ionicons/icons';
+import { person, arrowBack } from 'ionicons/icons';
+import { heartOutline, heart } from 'ionicons/icons';
 
-const router = useRouter();
 const route = useRoute();
+const router = useRouter();
+const animalsStore = useAnimalsStore();
+const favouritesStore = useFavouritesStore();
+
+const animal = ref<any>(null);
+const isFavourite = ref(false);
+
+const getAnimal = (id: number) => {
+  return animalsStore.animals.find((animal: any) => animal.animal_id === id);
+};
+
+onMounted(() => {
+  const animalId = Number(route.params.id);
+  animal.value = getAnimal(animalId);
+
+  if (animal.value) {
+    isFavourite.value = favouritesStore.favourites.some((fav: any) => fav.animal_id === animal.value.animal_id);
+  }
+});
+
+const toggleFavourite = () => {
+  if (isFavourite.value) {
+    favouritesStore.removeFavourite(animal.value);
+    isFavourite.value = false;
+  } else {
+    favouritesStore.addFavourite(animal.value);
+    isFavourite.value = true;
+  }
+};
+
+
+/*
+import { ref, onMounted } from 'vue';
+
 const animal = ref<any>(null);
 
 onMounted(async () => {
@@ -56,14 +99,22 @@ onMounted(async () => {
   } catch (error) {
     console.error('Error de conexión:', error);
   }
-});
+});*/
 
-const navigateToUsefulLinks = () => {
-  router.push('/useful-links');
+const goBack = () => {
+  router.back();
+};
+
+const navigateToProfile = () => {
+  router.push('/profile');
+};
+
+const navigateToVisitForm = () => {
+  router.push('/visit-form');
 };
   
-const navigateToContact = () => {
-  router.push('/contact');
+const navigateToAdoptForm = () => {
+  router.push('/adopt-form');
 };
 </script>
 

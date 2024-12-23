@@ -3,7 +3,7 @@
       <ion-header :translucent="true">
         <ion-toolbar>
           <img src="@/assets/logo.png" alt="Logo" class="logo" />
-          <ion-button class="icon" size="small" slot="end" shape="round">
+          <ion-button @click="navigateToProfile" class="icon" size="small" slot="end" shape="round">
             <ion-icon :icon="person"/>
           </ion-button>
         </ion-toolbar>
@@ -40,6 +40,11 @@
             </ion-select>
           </ion-item>
 
+          <ion-item>
+            <ion-label>Keyword</ion-label>
+            <ion-input v-model="filters.keyword" type="text" placeholder=" Introduce a keyword"/>
+          </ion-item>
+
         </form>
       </ion-content>
   
@@ -65,6 +70,7 @@ const filters = ref({
   species: 'all',
   sex: 'all',
   status: 'all',
+  keyword: '',
 });
 
 const applyFilters = () => {
@@ -74,8 +80,13 @@ const applyFilters = () => {
       species: filters.value.species,
       sex: filters.value.sex,
       status: filters.value.status,
+      keyword: filters.value.keyword,
     }
   });
+};
+
+const navigateToProfile = () => {
+  router.push('/profile');
 };
 </script>
   

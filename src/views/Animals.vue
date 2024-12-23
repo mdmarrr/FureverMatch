@@ -3,7 +3,7 @@
       <ion-header :translucent="true">
         <ion-toolbar>
           <img src="@/assets/logo.png" alt="Logo" class="logo" />
-          <ion-button class="icon" size="small" slot="end" shape="round">
+          <ion-button @click="navigateToProfile" class="icon" size="small" slot="end" shape="round">
             <ion-icon :icon="person"/>
           </ion-button>
         </ion-toolbar>
@@ -31,7 +31,9 @@
       <ion-footer>
         <ion-toolbar>
             <div class="button-container">
-                <ion-button class="outline-button" fill="outline" @click="navigateToUsefulLinks">Useful Links</ion-button>
+                <ion-button class="outline-button" fill="outline" @click="navigateToAnimals">Animals</ion-button>
+                <ion-button class="outline-button" fill="outline" @click="navigateToFAQ">FAQ</ion-button>
+                <ion-button class="outline-button" fill="outline" @click="navigateToArticles">Articles</ion-button>
                 <ion-button class="outline-button" fill="outline" @click="navigateToContact">Shelters</ion-button>
             </div>
         </ion-toolbar>
@@ -40,13 +42,42 @@
 </template>
   
 <script setup lang="ts">
+
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useAnimalsStore } from '@/stores/animalsStore';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/vue';
 import { person, options } from 'ionicons/icons';
-  
-const router = useRouter();
 
+const router = useRouter();
+const animalsStore = useAnimalsStore();
+
+const filters = ref({
+  species: 'all',
+  sex: 'all',
+  status: 'all',
+  keyword: ''
+});
+
+const filteredAnimals = ref<any[]>([]);
+
+const applyFilters = () => {
+  filteredAnimals.value = animalsStore.getFilteredAnimals(filters.value);
+};
+
+onMounted(() => {
+  const queryParams = new URLSearchParams(window.location.search);
+
+  filters.value.species = (Array.isArray(queryParams.get('species')) ? queryParams.get('species') : queryParams.get('species')) ?? 'all';
+  filters.value.sex = (Array.isArray(queryParams.get('sex')) ? queryParams.get('sex') : queryParams.get('sex')) ?? 'all';
+  filters.value.status = (Array.isArray(queryParams.get('status')) ? queryParams.get('status') : queryParams.get('status')) ?? 'all';
+  filters.value.keyword = queryParams.get('keyword') ?? '';
+
+  applyFilters();
+});
+
+
+/*
 const animals = ref<any[]>([]);
 
 const filteredAnimals = ref<any[]>([]);
@@ -65,7 +96,7 @@ onMounted(async () => {
   filters.value.status = (Array.isArray(queryParams.status) ? queryParams.status[0] : queryParams.status) ?? 'all';
 
   try {
-    const response = await fetch(`https://furever-match-eccf751a1528.herokuapp.com/api/animals`);
+    const response = await fetch(`http://localhost:5000/api/animals`);
     if (response.ok) {
       const data = await response.json();
       animals.value = data;
@@ -98,13 +129,25 @@ const applyFilters = async () => {
     console.error('Error de conexión:', error);
   }
 };
-
+*/
 const openFilters = () => {
   router.push('/filters');
 };
 
-const navigateToUsefulLinks = () => {
-  router.push('/useful-links');
+const navigateToProfile = () => {
+  router.push('/profile');
+};
+
+const navigateToAnimals = () => {
+  router.push('/animals');
+};
+
+const navigateToFAQ = () => {
+  router.push('/faq');
+};
+
+const navigateToArticles = () => {
+  router.push('/articles');
 };
   
 const navigateToContact = () => {

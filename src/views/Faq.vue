@@ -3,7 +3,7 @@
       <ion-header :translucent="true">
         <ion-toolbar>
           <img src="@/assets/logo.png" alt="Logo" class="logo" />
-          <ion-button class="icon" size="small" slot="end" shape="round">
+          <ion-button @click="navigateToProfile" class="icon" size="small" slot="end" shape="round">
             <ion-icon :icon="person"></ion-icon>
           </ion-button>
         </ion-toolbar>
@@ -39,33 +39,13 @@
 
       <ion-footer>
         <ion-toolbar>
-        <div class="button-container">
-          <router-link to="/faq">
-            <ion-button
-              fill="outline"
-              :class="{ 'active-button': $route.path === '/faq' }"
-            >
-              FAQ
-            </ion-button>
-          </router-link>
-          <router-link to="/articles">
-            <ion-button
-              fill="outline"
-              :class="{ 'active-button': $route.path === '/articles' }"
-            >
-              Articles
-            </ion-button>
-          </router-link>
-          <router-link to="/legal">
-            <ion-button
-              fill="outline"
-              :class="{ 'active-button': $route.path === '/legal' }"
-            >
-              Legal
-            </ion-button>
-          </router-link>
-        </div>
-      </ion-toolbar>      
+            <div class="button-container">
+                <ion-button class="outline-button" fill="outline" @click="navigateToAnimals">Animals</ion-button>
+                <ion-button class="outline-button" fill="outline" @click="navigateToFAQ">FAQ</ion-button>
+                <ion-button class="outline-button" fill="outline" @click="navigateToArticles">Articles</ion-button>
+                <ion-button class="outline-button" fill="outline" @click="navigateToContact">Shelters</ion-button>
+            </div>
+        </ion-toolbar>
       </ion-footer>
     </ion-page>
 </template>
@@ -88,8 +68,20 @@ const toggleAnswer = (index: number) => {
   isOpen.value[index] = !isOpen.value[index];
 };
 
-const navigateToUsefulLinks = () => {
-  router.push('/useful-links');
+const navigateToProfile = () => {
+  router.push('/profile');
+};
+
+const navigateToAnimals = () => {
+  router.push('/animals');
+};
+
+const navigateToFAQ = () => {
+  router.push('/faq');
+};
+
+const navigateToArticles = () => {
+  router.push('/articles');
 };
   
 const navigateToContact = () => {
