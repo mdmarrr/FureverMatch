@@ -30,6 +30,20 @@
           </ion-item>
 
           <ion-item>
+            <ion-label>City</ion-label>
+            <ion-select v-model="filters.city">
+              <ion-select-option value="all">All</ion-select-option>
+              <ion-select-option value="Barcelona">Barcelona</ion-select-option>
+              <ion-select-option value="Galicia">Galicia</ion-select-option>
+              <ion-select-option value="Huelva">Huelva</ion-select-option>
+              <ion-select-option value="Madrid">Madrid</ion-select-option>
+              <ion-select-option value="Málaga">Málaga</ion-select-option>
+              <ion-select-option value="Navarra">Navarra</ion-select-option>
+              <ion-select-option value="Valencia">Valencia</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
             <ion-label>Status</ion-label>
             <ion-select v-model="filters.status">
               <ion-select-option value="all">All</ion-select-option>
@@ -69,6 +83,7 @@ const router = useRouter();
 const filters = ref({
   species: 'all',
   sex: 'all',
+  city: 'all',
   status: 'all',
   keyword: '',
 });
@@ -79,6 +94,7 @@ const applyFilters = () => {
     query: {
       species: filters.value.species,
       sex: filters.value.sex,
+      city: filters.value.city,
       status: filters.value.status,
       keyword: filters.value.keyword,
     }
@@ -95,5 +111,23 @@ const navigateToProfile = () => {
   display: flex;
   justify-content: center;
   gap: 10px;
+}
+  
+ion-button.active-button {
+  --background: #1A4B41;
+  --color: white;
+  --border-color: #1A4B41;
+}
+  
+ion-button:not(.active-button) {
+  --background: transparent;
+  --border-color: #1A4B41;
+  --color: #1A4B41;
+}
+
+ion-button:hover {
+  --background: #1A4B41;
+  --border-color: #1A4B41;
+  --color: white;
 }
 </style>

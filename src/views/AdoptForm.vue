@@ -10,7 +10,11 @@
       </ion-header>
   
       <ion-content>
-        <form @submit.prevent="handleSubmit">
+        <form class="form-container" @submit.prevent="handleSubmit">
+
+          <ion-button @click="goBack" class="icon" size="small" slot="start" shape="round">
+            <ion-icon :icon="arrowBack"/>
+          </ion-button>
 
           <ion-item>
             <ion-label position="floating">Name</ion-label>
@@ -49,12 +53,12 @@
           </ion-item>
   
           <ion-item>
-            <ion-label position="floating">How much time will you dedicate to your new companion (play, walks, training, etc.)?</ion-label>
+            <ion-label position="floating">How much time will you be able to dedicate to your new companion?</ion-label>
             <ion-input v-model="form.timeCommitment" type="text" required></ion-input>
           </ion-item>
   
           <ion-item>
-            <ion-label>Have you read and agree to the adoption contract?</ion-label>
+            <ion-label>I have read and agreed to the adoption contract</ion-label>
             <ion-checkbox v-model="form.agreeToContract" required></ion-checkbox>
           </ion-item>
   
@@ -68,7 +72,7 @@
   
 <script setup lang="ts">
   import { ref } from 'vue';
-  import { person} from 'ionicons/icons';
+  import { person, arrowBack } from 'ionicons/icons';
   import { useRouter } from 'vue-router';
   
   const router = useRouter();
@@ -91,15 +95,23 @@
   const navigateToProfile = () => {
     router.replace('/profile');
   };
+
+  const goBack = () => {
+  router.back();
+  };
 </script>
   
 <style scoped>
+.form-container {
+  padding: 20px;
+  padding-bottom: 70px;
+}
+
 .button-container {
   display: flex;
   justify-content: center;
   gap: 10px;
 }
-
 
 ion-button.active-button {
   --background: #1A4B41;

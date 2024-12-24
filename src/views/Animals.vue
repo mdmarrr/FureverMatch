@@ -10,9 +10,12 @@
       </ion-header>
   
       <ion-content>
-        <ion-toolbar>
-          <ion-button class="filtersIcon" size="large" slot="end" fill="clear" shape="round" @click="openFilters">
-              <ion-icon :icon="options" />
+        <ion-toolbar class="toolbar-icons">
+          <ion-button size="large" slot="end" fill="clear" shape="round" @click="openFilters">
+              <ion-icon :icon="options" style="font-size: 25px;" />
+          </ion-button>
+          <ion-button size="large" slot="end" fill="clear" shape="round" @click="goToFavourites">
+              <ion-icon :icon="heart" style="font-size: 25px;" />
           </ion-button>
         </ion-toolbar>
         <div class="animals-container">
@@ -23,6 +26,7 @@
             <h2>{{ animal.name }}</h2>
             <p>{{ animal.species}}, {{ animal.sex }}</p>
             <p>{{ animal.age }}</p>
+            <p>{{ animal.city }}</p>
             <p>{{ animal.status }}</p>
           </div>
         </div>
@@ -31,7 +35,7 @@
       <ion-footer>
         <ion-toolbar>
             <div class="button-container">
-                <ion-button class="outline-button" fill="outline" @click="navigateToAnimals">Animals</ion-button>
+                <ion-button class="active-button" @click="navigateToAnimals">Animals</ion-button>
                 <ion-button class="outline-button" fill="outline" @click="navigateToFAQ">FAQ</ion-button>
                 <ion-button class="outline-button" fill="outline" @click="navigateToArticles">Articles</ion-button>
                 <ion-button class="outline-button" fill="outline" @click="navigateToContact">Shelters</ion-button>
@@ -47,7 +51,7 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAnimalsStore } from '@/stores/animalsStore';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/vue';
-import { person, options } from 'ionicons/icons';
+import { person, options, heart } from 'ionicons/icons';
 
 const router = useRouter();
 const animalsStore = useAnimalsStore();
@@ -134,6 +138,10 @@ const openFilters = () => {
   router.push('/filters');
 };
 
+const goToFavourites = () => {
+    router.push('/favourites');
+};
+
 const navigateToProfile = () => {
   router.push('/profile');
 };
@@ -177,14 +185,21 @@ const navigateToContact = () => {
 
 @media (max-width: 768px) {
   .animal img {
-    max-width: 90%;
+    width: 95%;
+    max-width: none;
   }
+}
+
+.toolbar-icons {
+  padding-right:20px;
+  display: flex;
+  gap: 5px;
 }
 
 .button-container {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 ion-button.active-button {

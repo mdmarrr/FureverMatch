@@ -41,7 +41,7 @@
         <ion-toolbar>
             <div class="button-container">
                 <ion-button class="outline-button" fill="outline" @click="navigateToAnimals">Animals</ion-button>
-                <ion-button class="outline-button" fill="outline" @click="navigateToFAQ">FAQ</ion-button>
+                <ion-button class="active-button" @click="navigateToFAQ">FAQ</ion-button>
                 <ion-button class="outline-button" fill="outline" @click="navigateToArticles">Articles</ion-button>
                 <ion-button class="outline-button" fill="outline" @click="navigateToContact">Shelters</ion-button>
             </div>
@@ -94,8 +94,7 @@ const navigateToContact = () => {
 .button-container {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-right: 20px;
+  gap: 5px;
 }
   
 ion-button.active-button {
@@ -117,11 +116,10 @@ ion-button:hover {
 }
   
 .faq-content {
-  margin-top: 20px;
-  margin-left: 20px;
   overflow-y: auto;
   height: 100%;
   max-height: 400px;
+  padding: 20px;
   padding-bottom: 60px;
 }
 
@@ -154,7 +152,7 @@ ion-button:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 70% 30%;
+  object-position: 60% 40%;
 }
 
 .overlay-text {

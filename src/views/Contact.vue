@@ -27,7 +27,7 @@
                 <ion-button class="outline-button" fill="outline" @click="navigateToAnimals">Animals</ion-button>
                 <ion-button class="outline-button" fill="outline" @click="navigateToFAQ">FAQ</ion-button>
                 <ion-button class="outline-button" fill="outline" @click="navigateToArticles">Articles</ion-button>
-                <ion-button class="outline-button" fill="outline" @click="navigateToContact">Shelters</ion-button>
+                <ion-button class="active-button" @click="navigateToContact">Shelters</ion-button>
             </div>
         </ion-toolbar>
       </ion-footer>
@@ -138,6 +138,17 @@ onMounted(async () => {
   gap: 10px;
   padding: 20px;
 }
+
+@media (max-width: 768px) {
+  .shelters-container {
+    display: block;
+    padding: 10px; 
+    padding-bottom: 50px;
+  }
+  .shelter {
+    margin-bottom: 15px;
+  }
+}
   
 .shelter {
   text-align: center;
@@ -146,7 +157,7 @@ onMounted(async () => {
 .button-container {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 ion-button.active-button {

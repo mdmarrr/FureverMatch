@@ -18,7 +18,7 @@
           <p>{{ animal.age }}</p>
           <p>{{ animal.status }}</p>
           <ion-button @click="removeFromFavourites(animal)">
-            Remove from Favourites
+            Remove
           </ion-button>
         </div>
       </div>

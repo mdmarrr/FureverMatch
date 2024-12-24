@@ -11,7 +11,7 @@
           <h2>Lucía</h2>
           <p>Email: lucia.ramirez@gmail.com</p>
   
-          <ion-item button @click="goToFavorites">
+          <ion-item button @click="goToFavourites">
             <ion-label>My Favourites</ion-label>
           </ion-item>
   
@@ -51,39 +51,39 @@
   const router = useRouter();
 
   const navigateToAnimals = () => {
-    router.replace('/animals');
+    router.push('/animals');
   };
 
   const navigateToFAQ = () => {
-    router.replace('/faq');
+    router.push('/faq');
   };
 
   const navigateToArticles = () => {
-    router.replace('/articles');
+    router.push('/articles');
   };
   
   const navigateToContact = () => {
-    router.replace('/contact');
+    router.push('/contact');
   };
   
-  const goToFavorites = () => {
-    router.replace('/favourites');
+  const goToFavourites = () => {
+    router.push('/favourites');
   };
   
   const goToSettings = () => {
-    router.replace('/settings');
+    router.push('/settings');
   };
   
   const goToPrivacy = () => {
-    router.replace('/privacy');
+    router.push('/privacy');
   };
   
   const goToNotifications = () => {
-    router.replace('/notifications');
+    router.push('/notifications');
   };
   
   const logout = () => {
-    router.replace('/login');
+    router.push('/login');
   };
 </script>
   

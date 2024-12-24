@@ -10,7 +10,10 @@
       </ion-header>
   
       <ion-content>
-        <form @submit.prevent="handleSubmit">
+        <form class="form-container" @submit.prevent="handleSubmit">
+          <ion-button @click="goBack" class="icon" size="small" slot="start" shape="round">
+            <ion-icon :icon="arrowBack"/>
+          </ion-button>
           <ion-item>
             <ion-label position="floating">Name</ion-label>
             <ion-input v-model="form.name" type="text" required></ion-input>
@@ -36,7 +39,7 @@
   
 <script setup lang="ts">
   import { ref } from 'vue';
-  import { person} from 'ionicons/icons';
+  import { person, arrowBack } from 'ionicons/icons';
   import { useRouter } from 'vue-router';
   
   const router = useRouter();
@@ -54,12 +57,20 @@
   const navigateToProfile = () => {
     router.push('/profile');
   };
+
+  const goBack = () => {
+  router.back();
+  };
 </script>
   
 <style scoped>
 ion-title {
   display: flex;
   justify-content: center;
+}
+
+.form-container {
+  padding: 20px;
 }
 
 .button-container {

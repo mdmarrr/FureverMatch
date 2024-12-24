@@ -2,10 +2,14 @@
 http://ionicframework.com/docs/theming/ */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+ion-header {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
 .logo {
-    width: 150px;
+    width: 130px;
     height: auto;
-    margin-left: 20px;
 }
 
 body, h1, h2, h3, strong, p, ion-title {
@@ -43,6 +47,7 @@ p {
 }
 
 ion-content {
+    margin: 20px;
     padding: 20px;
 }
 
@@ -53,33 +58,23 @@ ion-button {
     --background-focused: #88f4be;
 
     --color: white;
-    width: 130px;
+    max-width: 70px;
     --border-style: solid;
     --border-color: #1A4B41;
     font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bold;
 }
 
 .icon {
     width: 40px;
     height: 40px;
-    margin-right: 20px;
 }
 
 .icons {
     width: 30px;
     height: 30px;
-    margin-right: 20px;
     font-size: 10px;
-}
-
-.filtersIcon {
-    width: 40px;
-    height: 40px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 10px;
 }
 
 ion-footer {

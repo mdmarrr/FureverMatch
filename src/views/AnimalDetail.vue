@@ -19,10 +19,11 @@
                 <h2>{{ animal.name }}</h2>
                 <p>{{ animal.species }}, {{ animal.sex }}</p>
                 <p>{{ animal.age }}</p>
+                <p>{{ animal.city }}</p>
                 <p>{{ animal.description }}</p>
                 <p>{{ animal.status }}</p>
                 <ion-button @click="toggleFavourite" class="icon" size="small" shape="round">
-                  <ion-icon :icon="isFavourite ? 'heart' : 'heart-outline'" />
+                  <ion-icon :icon="heart" />
                 </ion-button>
             </div>
         </div>
@@ -47,7 +48,7 @@ import { useAnimalsStore } from '@/stores/animalsStore';
 import { useFavouritesStore } from '@/stores/favouritesStore';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/vue';
 import { person, arrowBack } from 'ionicons/icons';
-import { heartOutline, heart } from 'ionicons/icons';
+import { heart } from 'ionicons/icons';
 
 const route = useRoute();
 const router = useRouter();
@@ -145,7 +146,7 @@ const navigateToAdoptForm = () => {
 .button-container {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 ion-button.active-button {
