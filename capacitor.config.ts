@@ -5,8 +5,8 @@ const config: CapacitorConfig = {
   appName: 'furever-match',
   webDir: 'www',
   server: {
-    url: 'http://172.20.10.3/:5000',
-    androidScheme: 'http'
+    "url": "http://10.0.2.2:8100",
+    "cleartext": true
   }
 };
 
