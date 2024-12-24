@@ -1,13 +1,13 @@
 # Furever Match
 
-Furever Match is an application that helps connect people with animals available for adoption. This project consists of both a front-end (the application) and a back-end (API with a PostgreSQL database).
+Furever Match is an application that helps connect people with animals available for adoption.
 
 ## Table of Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
+- [Prerequisites](#prerequisites)
+- [Frontend Setup](#frontend-setup)
+- [Android Studio Setup](#AndroidStudio-setup)
 
 ## Installation
 
@@ -16,34 +16,14 @@ Follow these steps to set up and run the project locally.
 ### Prerequisites
 
 - Node.js (preferably version 16 or higher)
-- PostgreSQL
-- Heroku (for the database)
-
-### Backend Setup
-
-1. Clone the repository:
-   
-   git clone https://github.com/mdmarrr/FureverMatch.git
-
-2. Navigate to the backend directory:
-
-   cd furever-match/backend
-
-3. Install the dependencies:
-
-   npm install
-
-4. Set up the PostgreSQL database (local or on Heroku). If you use Heroku, follow these steps to connect your app to a PostgreSQL database.
-
-5. Start the backend server:
-
-   node server.js
+- Ionic CLI
+- Android Studio
 
 ### Frontend Setup
 
-1. Navigate to the frontend directory:
+1. From the project root:
 
-   cd furever-match/frontend
+   cd furever-match
 
 2. Install the dependencies:
 
@@ -52,12 +32,26 @@ Follow these steps to set up and run the project locally.
 3. Start the frontend application:
 
    npm run serve
+   ionic serve
 
-The application should now be running at http://localhost:8080 (default for Vue).
+The application should now be running at http://localhost:8100.
 
-### API Endpoints
+### Android Studio Setup
 
-GET /api/animals: Retrieve all animals.
-GET /api/animals/:id: Retrieve a specific animal by ID.
-POST /api/users: Register a new user.
-GET /api/users: Retrieve all users.
+1. From the project root:
+
+   cd furever-match
+   
+2. Add the android folder: 
+
+   npx cap add android
+
+3. Sync the Android project:
+
+   npx cap sync android
+
+4. Open the project on Android Studio:
+
+   npx cap open Android
+
+5. Once the project is open in Android Studio, you can run it either on an Android Emulator or a physical Android device.
