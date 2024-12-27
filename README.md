@@ -34,7 +34,7 @@ Follow these steps to set up and run the project locally.
    npm run serve
    ionic serve
 
-The application should now be running at http://localhost:8100.
+The application should now be running at http://localhost:<port>.
 
 ### Android Studio Setup
 

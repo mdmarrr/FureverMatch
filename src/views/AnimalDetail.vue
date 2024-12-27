@@ -146,7 +146,13 @@ const navigateToAdoptForm = () => {
 .button-container {
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    gap: 5px;  /* Reducir el espaciado entre los botones en la versión móvil */
+  }
 }
 
 ion-button.active-button {

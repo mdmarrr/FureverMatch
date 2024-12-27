@@ -9,15 +9,17 @@
     <div class="login-container">
       <div class="form-container">
         <form @submit.prevent="login">
-        <ion-item>
-          <ion-label position="stacked">Email</ion-label>
-          <ion-input v-model="email" type="email" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">Password</ion-label>
-          <ion-input v-model="password" type="password" required></ion-input>
-        </ion-item>
-        <ion-button type="submit">Log in</ion-button>
+          <ion-item>
+            <ion-label position="stacked" class="custom-font">Email</ion-label>
+            <ion-input v-model="email" type="email" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" class="custom-font">Password</ion-label>
+            <ion-input v-model="password" type="password" required></ion-input>
+          </ion-item>
+          <div class="button-container">
+            <ion-button type="submit">Log in</ion-button>
+          </div>
         </form>
       </div>
     </div>
@@ -50,12 +52,16 @@ const login = async () => {
 }
 
 .form-container {
-  width: 150px;
+  width: 300px;
   text-align: center;
 }
 
 .button-container {
-  margin-top: 20px;
+  margin-top: 30px;
+}
+
+.custom-font {
+  font-size: 20px;
 }
 
 </style>  

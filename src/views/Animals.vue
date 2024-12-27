@@ -8,7 +8,7 @@
           </ion-button>
         </ion-toolbar>
       </ion-header>
-  
+
       <ion-content>
         <ion-toolbar class="toolbar-icons">
           <ion-button size="large" slot="end" fill="clear" shape="round" @click="openFilters">
@@ -199,7 +199,13 @@ const navigateToContact = () => {
 .button-container {
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    gap: 5px;  /* Reducir el espaciado entre los botones en la versión móvil */
+  }
 }
 
 ion-button.active-button {
