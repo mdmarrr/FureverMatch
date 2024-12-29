@@ -12,10 +12,10 @@
       <ion-content>
         <ion-toolbar class="toolbar-icons">
           <ion-button size="large" slot="end" fill="clear" shape="round" @click="openFilters">
-              <ion-icon :icon="options" style="font-size: 25px;" />
+              <ion-icon :icon="options" slot="icon-only" style="font-size: 25px;" />
           </ion-button>
           <ion-button size="large" slot="end" fill="clear" shape="round" @click="goToFavourites">
-              <ion-icon :icon="heart" style="font-size: 25px;" />
+              <ion-icon :icon="heart" slot="icon-only" style="font-size: 25px;" />
           </ion-button>
         </ion-toolbar>
         <div class="animals-container">
@@ -191,9 +191,9 @@ const navigateToContact = () => {
 }
 
 .toolbar-icons {
-  padding-right:20px;
+  padding-top: 10px;
+  padding-right: 20px;
   display: flex;
-  gap: 5px;
 }
 
 .button-container {
