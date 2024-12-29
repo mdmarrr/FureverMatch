@@ -31,7 +31,8 @@ Follow these steps to set up and run the project locally.
 
 3. Start the frontend application:
 
-   npm run serve
+   npm run build
+   
    ionic serve
 
 The application should now be running at http://localhost:<port>.
