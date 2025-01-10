@@ -134,5 +134,4 @@ ion-button:hover {
   font-size: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
-
 </style>
