@@ -142,7 +142,7 @@
 
 @media (max-width: 768px) {
   .button-container {
-    gap: 5px;  /* Reducir el espaciado entre los botones en la versión móvil */
+    gap: 5px;
   }
 }
 

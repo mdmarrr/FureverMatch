@@ -17,7 +17,25 @@
             </div>
           </div>
             <div class="articles-content">
-              
+              <div v-for="(article, index) in articles" :key="index" class="article-item">
+                <div class="article-title">
+                  <h3>{{ article.title }}</h3>
+                  <ion-button
+                    class="icons"
+                    size="small"
+                    shape="round"
+                    slot="end"
+                    @click="toggleLink(index)"
+                  >
+                    <ion-icon :icon="isOpen[index] ? remove : add"></ion-icon>
+                  </ion-button>
+                </div>
+                <div v-if="isOpen[index]" class="article-link">
+                  <a :href="article.link" target="_blank" rel="noopener noreferrer">
+                    {{ article.link }}
+                  </a>
+                </div>
+              </div>
             </div>
       </ion-content>
 
@@ -35,10 +53,25 @@
 </template>
   
 <script setup lang="ts">
-import { person } from 'ionicons/icons';
+import { person, add, remove } from 'ionicons/icons';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
+
+const articles = ref([
+  { title: 'A Veterinarian’s Guide to Senior Dog Care', link: 'https://www.greatpetcare.com/wellness/guide-to-senior-dog-care/' },
+  { title: '10 Dangers of Fleas, Ticks and Mosquitoes', link: 'https://www.greatpetcare.com/parasites/dangers-of-fleas-ticks-and-mosquitoes/' },
+  { title: 'How Robotic Technology Is Revolutionizing Cancer Treatment for Pets', link: 'https://www.greatpetcare.com/pet-news/robotic-technology-revolutionizing-cancer-treatment-for-pets/' },
+  { title: 'Cat Wheezing: What It Sounds Like and Why It Happens', link: 'https://www.greatpetcare.com/cat-health/cat-wheezing/' },
+  { title: '8 Fungal Infections in Dogs You Should Know About', link: 'https://www.greatpetcare.com/dog-health/fungal-infections-in-dogs/' },
+]);
+
+const isOpen = ref(Array(articles.value.length).fill(false));
+
+const toggleLink = (index: number) => {
+  isOpen.value[index] = !isOpen.value[index];
+};
 
 const navigateToProfile = () => {
   router.push('/profile');
@@ -99,6 +132,19 @@ ion-button:hover {
   height: 100%;
   max-height: 400px;
   padding-bottom: 60px;
+}
+
+.article-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.article-link {
+  margin-top: -10px;
+  padding-left: 20px;
+  font-size: 14px;
+  color: #666;
 }
 
 .image-container {

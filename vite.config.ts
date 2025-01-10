@@ -18,7 +18,8 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    environment: 'jsdom'
+    environment: 'jsdom',
+    include: ['**/*.test.{js,ts,vue}']
   },
   build: {
     outDir: 'www',

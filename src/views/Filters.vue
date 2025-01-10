@@ -12,8 +12,8 @@
       <ion-content>
         <form>
           <ion-item>
-            <ion-label>Species</ion-label>
-            <ion-select v-model="filters.species">
+            <ion-label for="species">Species</ion-label>
+            <ion-select id="species" v-model="filters.species">
               <ion-select-option value="all">All</ion-select-option>
               <ion-select-option value="Dog">Dog</ion-select-option>
               <ion-select-option value="Cat">Cat</ion-select-option>
@@ -21,8 +21,8 @@
           </ion-item>
   
           <ion-item>
-            <ion-label>Sex</ion-label>
-            <ion-select v-model="filters.sex">
+            <ion-label for="sex">Sex</ion-label>
+            <ion-select id="sex" v-model="filters.sex">
               <ion-select-option value="all">All</ion-select-option>
               <ion-select-option value="male">Male</ion-select-option>
               <ion-select-option value="female">Female</ion-select-option>
@@ -44,8 +44,8 @@
           </ion-item>
 
           <ion-item>
-            <ion-label>Status</ion-label>
-            <ion-select v-model="filters.status">
+            <ion-label for="status">Status</ion-label>
+            <ion-select id="status" v-model="filters.status">
               <ion-select-option value="all">All</ion-select-option>
               <ion-select-option value="available">Available</ion-select-option>
               <ion-select-option value="adopted">Adopted</ion-select-option>

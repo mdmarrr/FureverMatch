@@ -22,7 +22,7 @@
                 <p>{{ animal.city }}</p>
                 <p>{{ animal.description }}</p>
                 <p>{{ animal.status }}</p>
-                <ion-button @click="toggleFavourite" class="icon" size="small" shape="round">
+                <ion-button @click="toggleFavourite" data-testid="favourite-button" class="icon" size="small" shape="round">
                   <ion-icon :icon="heart" />
                 </ion-button>
             </div>
@@ -50,10 +50,26 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from 
 import { person, arrowBack } from 'ionicons/icons';
 import { heart } from 'ionicons/icons';
 
+interface Animal {
+  animal_id: number;
+  name: string;
+  species: string;
+  sex: string;
+  age: string;
+  city: string;
+  status: string;
+  description: string;
+  photo: string;
+}
+
 const route = useRoute();
 const router = useRouter();
 const animalsStore = useAnimalsStore();
 const favouritesStore = useFavouritesStore();
+
+const props = defineProps<{
+  animal: Animal;
+}>();
 
 const animal = ref<any>(null);
 const isFavourite = ref(false);
@@ -130,7 +146,7 @@ const navigateToAdoptForm = () => {
 
 @media (max-width: 768px) {
   .button-container {
-    gap: 5px;  /* Reducir el espaciado entre los botones en la versión móvil */
+    gap: 5px;
   }
 }
 

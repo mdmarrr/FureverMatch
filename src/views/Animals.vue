@@ -59,6 +59,7 @@ const animalsStore = useAnimalsStore();
 const filters = ref({
   species: 'all',
   sex: 'all',
+  city: 'all',
   status: 'all',
   keyword: ''
 });
@@ -74,6 +75,7 @@ onMounted(() => {
 
   filters.value.species = (Array.isArray(queryParams.get('species')) ? queryParams.get('species') : queryParams.get('species')) ?? 'all';
   filters.value.sex = (Array.isArray(queryParams.get('sex')) ? queryParams.get('sex') : queryParams.get('sex')) ?? 'all';
+  filters.value.city = (Array.isArray(queryParams.get('city')) ? queryParams.get('city') : queryParams.get('city')) ?? 'all';
   filters.value.status = (Array.isArray(queryParams.get('status')) ? queryParams.get('status') : queryParams.get('status')) ?? 'all';
   filters.value.keyword = queryParams.get('keyword') ?? '';
 
@@ -150,7 +152,7 @@ const navigateToContact = () => {
 
 @media (max-width: 768px) {
   .button-container {
-    gap: 5px;  /* Reducir el espaciado entre los botones en la versión móvil */
+    gap: 5px;
   }
 }
 
