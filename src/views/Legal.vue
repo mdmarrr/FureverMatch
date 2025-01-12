@@ -11,6 +11,9 @@
 
       <ion-content>
         <div class="image-container">
+          <ion-button @click="goBack" class="icon back-button" size="small" slot="start" shape="round">
+            <ion-icon :icon="arrowBack"/>
+          </ion-button>
           <img src="@/assets/catdog.jpg" alt="cat & dog" class="image" />
             <div class="overlay-text">
               <h1>Before you commit...</h1>
@@ -45,10 +48,14 @@
 </template>
   
 <script setup lang="ts">
-import { person } from 'ionicons/icons';
+import { person, arrowBack } from 'ionicons/icons';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
+
+const goBack = () => {
+  router.back();
+};
 
 const navigateToProfile = () => {
   router.push('/profile');
@@ -76,8 +83,13 @@ const navigateToContact = () => {
 .button-container {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-right: 20px;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    gap: 5px;
+  }
 }
   
 ion-button.active-button {
@@ -104,7 +116,7 @@ ion-button:hover {
   overflow-y: auto;
   height: 100%;
   max-height: 575px;
-  padding-bottom: 60px;
+  padding-bottom: 80px;
 }
 
 .image-container {
@@ -123,7 +135,7 @@ ion-button:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 70% 30%;
+  object-position: 60% 40%;
 }
 
 .overlay-text {
@@ -133,5 +145,23 @@ ion-button:hover {
   color: white;
   font-size: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+}
+
+.outline-button {
+  --border-color: #1A4B41;
+  --color: #1A4B41;
+  --background: transparent;
+}
+
+.outline-button:hover {
+  --color: white;
+  --background: #1A4B41;
 }
 </style>

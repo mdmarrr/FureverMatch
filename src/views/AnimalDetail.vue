@@ -127,14 +127,14 @@ const navigateToAdoptForm = () => {
 }
   
 .animal img {
-  width: 30%;
+  width: 50%;
   height: auto;
   border-radius: 8px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .animal img {
-    max-width: 90%;
+    max-width: 100%; 
   }
 }
 

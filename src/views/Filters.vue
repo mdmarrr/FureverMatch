@@ -11,6 +11,9 @@
   
       <ion-content>
         <form>
+          <ion-button @click="goBack" class="icon back-button" size="small" slot="start" shape="round">
+            <ion-icon :icon="arrowBack"/>
+          </ion-button>
           <ion-item>
             <ion-label for="species">Species</ion-label>
             <ion-select id="species" v-model="filters.species">
@@ -76,7 +79,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { IonSelect, IonSelectOption, IonItem, IonLabel, IonRange, IonInput, IonButton } from '@ionic/vue';
-import { person } from 'ionicons/icons';
+import { person, arrowBack } from 'ionicons/icons';
   
 const router = useRouter();
   
@@ -103,6 +106,10 @@ const applyFilters = () => {
 
 const navigateToProfile = () => {
   router.push('/profile');
+};
+
+const goBack = () => {
+  router.back();
 };
 </script>
   
@@ -136,4 +143,10 @@ ion-button:hover {
   --border-color: #1A4B41;
   --color: white;
 }
+
+.back-button {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
 </style>
